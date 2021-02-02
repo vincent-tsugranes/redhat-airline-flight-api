@@ -1,7 +1,11 @@
 {
-  "name": "openshift-ts",
-  "version": "4.0.0",
-  "description": "A sample TypeScript application that can be deployed on OpenShift",
+  "name": "redhat-airline-flight-api",
+  "version": "0.0.1",
+  "description": "API to provide flight information",
+  "author": {
+    "name": "Vince Tsugranes",
+    "url": "https://github.com/vincent-tsugranes"
+  },
   "main": "src/server.js",
   "scripts": {
     "build": "tsc",
@@ -19,14 +23,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evanshortiss/openshift-typescript-example.git"
+    "url": "git+https://github.com/vincent-tsugranes/redhat-airline-flight-api.git"
   },
-  "author": "Evan Shortiss <evanshortiss@gmail.com> (https://evanshortiss.com/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/evanshortiss/openshift-typescript-example/issues"
-  },
-  "homepage": "https://github.com/evanshortiss/openshift-typescript-example#readme",
   "dependencies": {
     "@types/luxon": "^1.25.1",
     "env-var": "~6.3.0",
