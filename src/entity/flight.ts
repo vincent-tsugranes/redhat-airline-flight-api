@@ -1,5 +1,6 @@
 import { Crewmember } from './crewmember';
 import { Airport } from './airport';
+import { Delay } from './delay';
 import * as luxon from 'luxon';
 
 export class Flight {
@@ -14,6 +15,8 @@ export class Flight {
   estimated_time_arrival: luxon.DateTime = luxon.DateTime.utc();
 
   crewmembers: Array<Crewmember> = new Array<Crewmember>();
+
+  delays: Array<Delay> = new Array<Delay>();
 
   public duration() {
     return this.estimated_time_departure.diff(this.estimated_time_arrival);

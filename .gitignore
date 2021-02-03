@@ -104,7 +104,7 @@ dist
 .tern-port
 
 #ignore generated js
-out/src/*
+out/*
 src/**.js
 *.d.ts
 *.js.map

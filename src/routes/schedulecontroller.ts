@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as luxon from 'luxon';
+
 const url = require('url');
 
 var faker = require('faker');
@@ -7,6 +8,7 @@ var faker = require('faker');
 import { Flight } from '../entity/flight';
 import { Crewmember } from '../entity/crewmember';
 import { Airport } from '../entity/airport';
+import { Delay } from '../entity/delay';
 
 class ScheduleController {
   public router = express.Router();
@@ -17,10 +19,10 @@ class ScheduleController {
   }
 
   public intializeRoutes() {
-    this.router.get(this.path, this.getSchedule);
+    this.router.get(this.path, this.GetSchedule);
   }
 
-  getSchedule = (request: express.Request, response: express.Response) => {
+  GetSchedule = (request: express.Request, response: express.Response) => {
     const queryObject = url.parse(request.url, true).query;
 
     let startDate = luxon.DateTime.utc().startOf('day');
@@ -41,7 +43,7 @@ class ScheduleController {
       flightCount = Number.parseInt(queryObject.flightCount);
     }
 
-    const flights = generateFlights(
+    const flights = GenerateFlights(
       aircraftCount,
       flightCount,
       startDate,
@@ -51,7 +53,7 @@ class ScheduleController {
   };
 }
 
-function generateFlights(
+function GenerateFlights(
   aircraftCount: number,
   flightsCount: number,
   start: luxon.DateTime,
@@ -107,11 +109,30 @@ function generateFlights(
       while (thisFlight.crewmembers[0].id == thisFlight.crewmembers[1].id) {
         thisFlight.crewmembers[1] = new Crewmember().random();
       }
+      thisFlight.delays = GetDelays();
+
       flights.push(thisFlight);
       lastFlight = thisFlight;
     }
   }
   return flights;
+}
+
+function GetDelays() {
+  const delays = new Array<Delay>();
+
+  // 1 in 20 chance of a flight delay: 5%
+
+  const delaysExist = faker.random.number({ min: 0, max: 20 }) === 1;
+
+  if (delaysExist) {
+    // if we're that 5% that has a delay, generate between 1-3 random delay codes
+    const delayCount = faker.random.number({ min: 1, max: 3 });
+    for (let index = 0; index < delayCount; index++) {
+      delays.push(new Delay().random());
+    }
+  }
+  return delays;
 }
 
 export default ScheduleController;
