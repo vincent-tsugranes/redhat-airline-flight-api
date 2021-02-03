@@ -1,0 +1,53 @@
+{
+  "delaycodes":[
+  {
+    "code": 6,
+    "name": "OA",
+    "description": "No gate/stand availability due to own airline activity"
+  },
+  {
+    "code": 11,
+    "name": "PD",
+    "description": "Late check-in, acceptance of passengers after deadline"
+  },
+  {
+    "code": 12,
+    "name": "PL",
+    "description": "Late Check-in, congestion in check-in area"
+  },
+  {
+    "code": 13,
+    "name": "PE",
+    "description": "Check-in error"
+  },
+  {
+    "code": 14,
+    "name": "PO",
+    "description": "Oversales, booking errors"
+  },
+  {
+    "code": 15,
+    "name": "PH",
+    "description": "Boarding, discrepancies and paging, missing checked-in passenger at gate"
+  },
+  {
+    "code": 16,
+    "name": "PS",
+    "description": "Commercial Publicity, Passenger Convenience, VIP, Press, Ground meals and missing personal items"
+  },
+  {
+    "code": 17,
+    "name": "PC",
+    "description": "Catering order, late or incorrect order given to supplier"
+  },
+  {
+    "code": 18,
+    "name": "PB",
+    "description": "Baggage processing, sorting, etc."
+  },
+  {
+    "code": 19,
+    "name": "PW",
+    "description": "Reduced Mobility, Boarding/Deboarding of passengers with reduced mobility"
+  }
+]}

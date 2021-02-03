@@ -1,4 +1,4 @@
-import crewData from '../..//data/crewmembers.json';
+import crewData from '../../data/crewmembers.json';
 
 export class Crewmember {
   id: number = 0;
