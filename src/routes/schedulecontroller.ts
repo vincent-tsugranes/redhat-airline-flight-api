@@ -129,7 +129,11 @@ function GetDelays() {
     // if we're that 5% that has a delay, generate between 1-3 random delay codes
     const delayCount = faker.random.number({ min: 1, max: 3 });
     for (let index = 0; index < delayCount; index++) {
-      delays.push(new Delay().random());
+      const delay = new Delay().random();
+      // if we don't already have this delay code, add it - prevents duplicates
+      if (delays.find((d) => d.code == delay.code) == undefined) {
+        delays.push(delay);
+      }
     }
   }
   return delays;
