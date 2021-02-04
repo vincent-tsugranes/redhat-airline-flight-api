@@ -6,7 +6,6 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "outDir": "out",
     "target": "es5",
     "lib": [
       "es2015"
