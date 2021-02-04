@@ -71,10 +71,18 @@ function GenerateFlights(
   );
 
   let flights = new Array<Flight>();
+  let aircrafts = new Array<String>();
 
   for (var i = 0; i < aircraftCount; i++) {
     let aircraft_registration =
       'N' + faker.random.number({ min: 100, max: 999 }) + 'VT';
+
+    // don't allow the same aircraft twice
+    while (aircrafts.includes(aircraft_registration)) {
+      aircraft_registration =
+        'N' + faker.random.number({ min: 100, max: 999 }) + 'VT';
+    }
+    aircrafts.push(aircraft_registration);
 
     //initialize the first flight
     let lastFlight = new Flight(faker.random.number({ min: 100, max: 9999 }));
