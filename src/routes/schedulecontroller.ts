@@ -72,6 +72,7 @@ function GenerateFlights(
 
   let flights = new Array<Flight>();
   let aircrafts = new Array<String>();
+  var aircraftModels = ['747-400', 'a320-500'];
 
   for (var i = 0; i < aircraftCount; i++) {
     let aircraft_registration =
@@ -84,6 +85,9 @@ function GenerateFlights(
     }
     aircrafts.push(aircraft_registration);
 
+    const aircraftModel =
+      aircraftModels[Math.floor(Math.random() * aircraftModels.length)];
+
     //initialize the first flight
     let lastFlight = new Flight(faker.random.number({ min: 100, max: 9999 }));
     lastFlight.id = faker.random.number({ min: 100, max: 9999 }) + i * 10000;
@@ -93,6 +97,7 @@ function GenerateFlights(
     for (var j = 0; j < flightsCount; j++) {
       let thisFlight: Flight = new Flight(lastFlight.id + 1);
       thisFlight.aircraft_registration = aircraft_registration;
+      thisFlight.aircraft_model = aircraftModel;
       thisFlight.departure_airport = lastFlight.arrival_airport;
       thisFlight.arrival_airport = new Airport().random();
       while (

@@ -6,6 +6,7 @@ import * as luxon from 'luxon';
 export class Flight {
   id: number = 0;
   aircraft_registration: string = '';
+  aircraft_model: string = '';
   departure_airport: Airport = new Airport();
   arrival_airport: Airport = new Airport();
 
