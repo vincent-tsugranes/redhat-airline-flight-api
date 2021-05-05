@@ -10,13 +10,13 @@
           "metadata": {
             "labels": {
               "name": "redhat-airline-flight-api",
-              "appId": "ik23e16ddn29"
+              "appId": "ba1plp46e52k"
             }
           },
           "spec": {
             "containers": [
               {
-                "image": "image-registry.openshift-image-registry.svc:5000/redhat-airline/redhat-airline-flight-api"
+                "image": "image-registry.openshift-image-registry.svc:5000/redhat-airline-serverless/redhat-airline-flight-api"
               }
             ]
           }
@@ -24,7 +24,7 @@
       },
       "metadata": {
         "name": "redhat-airline-flight-api",
-        "namespace": "redhat-airline"
+        "namespace": "redhat-airline-serverless"
       }
     }
   ]
