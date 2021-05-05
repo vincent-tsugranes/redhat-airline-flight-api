@@ -72,7 +72,7 @@ function GenerateFlights(
 
   let flights = new Array<Flight>();
   let aircrafts = new Array<String>();
-  var aircraftModels = ['747-400', 'a320-500'];
+  var aircraftModels = ['747-400', 'A320-500'];
 
   for (var i = 0; i < aircraftCount; i++) {
     let aircraft_registration =
