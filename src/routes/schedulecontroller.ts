@@ -76,12 +76,12 @@ function GenerateFlights(
 
   for (var i = 0; i < aircraftCount; i++) {
     let aircraft_registration =
-      'N' + faker.random.number({ min: 100, max: 999 }) + 'VT';
+      'N' + faker.datatype.number({ min: 100, max: 999 }) + 'VT';
 
     // don't allow the same aircraft twice
     while (aircrafts.includes(aircraft_registration)) {
       aircraft_registration =
-        'N' + faker.random.number({ min: 100, max: 999 }) + 'VT';
+        'N' + faker.datatype.number({ min: 100, max: 999 }) + 'VT';
     }
     aircrafts.push(aircraft_registration);
 
@@ -89,8 +89,8 @@ function GenerateFlights(
       aircraftModels[Math.floor(Math.random() * aircraftModels.length)];
 
     //initialize the first flight
-    let lastFlight = new Flight(faker.random.number({ min: 100, max: 9999 }));
-    lastFlight.id = faker.random.number({ min: 100, max: 9999 }) + i * 10000;
+    let lastFlight = new Flight(faker.datatype.number({ min: 100, max: 9999 }));
+    lastFlight.id = faker.datatype.number({ min: 100, max: 9999 }) + i * 10000;
     lastFlight.arrival_airport = new Airport().random();
     lastFlight.estimated_time_arrival = start.minus({ hours: 4 });
 
@@ -110,12 +110,12 @@ function GenerateFlights(
 
       //add random between 1-6 for ground
       thisFlight.estimated_time_departure = lastFlight.estimated_time_arrival.plus(
-        { hours: faker.random.number({ min: 1, max: 6 }) }
+        { hours: faker.datatype.number({ min: 1, max: 6 }) }
       );
 
       //add random between 3-12 for flight
       thisFlight.estimated_time_arrival = thisFlight.estimated_time_departure.plus(
-        { hours: faker.random.number({ min: 3, max: 12 }) }
+        { hours: faker.datatype.number({ min: 3, max: 12 }) }
       );
       thisFlight.distance = thisFlight.departure_airport.distanceBetween(
         thisFlight.arrival_airport
@@ -145,11 +145,11 @@ function GetDelays() {
 
   // 1 in 20 chance of a flight delay: 5%
 
-  const delaysExist = faker.random.number({ min: 0, max: 20 }) === 1;
+  const delaysExist = faker.datatype.number({ min: 0, max: 20 }) === 1;
 
   if (delaysExist) {
     // if we're that 5% that has a delay, generate between 1-3 random delay codes
-    const delayCount = faker.random.number({ min: 1, max: 3 });
+    const delayCount = faker.datatype.number({ min: 1, max: 3 });
     for (let index = 0; index < delayCount; index++) {
       const delay = new Delay().random();
       // if we don't already have this delay code, add it - prevents duplicates
